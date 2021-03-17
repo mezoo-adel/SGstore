@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Gaming سحالي</string>
+    <string name="description">الوصف</string>
+    <string name="price">EGP</string>
+    <string name="buy">إشترى</string>
+    <string name="facebook">صفحتنا على الفيسبوك</string>
+    <string name="youtube">قناتنا على اليوتيوب</string>
+    <string name="open">مفتوح</string>
+    <string name="closed">مغلق</string>
+    <string name="order">"لقد طلبت "</string>
+    <string name="coming_soon">قـريبا .....</string>
+    <string name="global_kr">بابجي العالمية/الكورية</string>
+    <string name="visit_us">زورونا على</string>
+    <string name="enter_your_name">اكتب الاسم/الإيميل</string>
+    <string name="enter_your_id">اكتب الID/الباسورد</string>
+    <string name="send">ارسال</string>
+    <string name="about">عن المطور</string>
+</resources>

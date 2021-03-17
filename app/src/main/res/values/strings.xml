@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">SGstore</string>
+    <string name="description">description</string>
+    <string name="price">EGP</string>
+    <string name="buy">BUY</string>
+    <string name="facebook">Facebook Page</string>
+    <string name="youtube">YouTube Channel</string>
+    <string name="open">open</string>
+    <string name="closed">closed</string>
+    <string name="order">"You Have Ordered "</string>
+    <string name="coming_soon">Coming Soon ...</string>
+    <string name="global_kr">PUBG Global/KR</string>
+    <string name="visit_us">Visit Us</string>
+    <string name="enter_your_name">Enter your Name\Email</string>
+    <string name="enter_your_id">Enter ID\Password</string>
+    <string name="send">Send</string>
+    <string name="about">About Developer</string>
+</resources>

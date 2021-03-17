@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="للتواصل معنا">
+        <menu>
+            <item android:title="من نحن"
+                android:id="@+id/about_s7aly"/>
+        </menu>
+    </item>
+        <item android:title="@string/visit_us" >
+            <menu >
+                <item
+                    android:id="@+id/open_facebook"
+                    android:icon="?attr/actionModeCloseDrawable"
+                    android:title="@string/facebook" />
+                <item
+                    android:id="@+id/open_youtube"
+                    android:icon="?attr/actionModeCloseDrawable"
+                    android:title="@string/youtube" />
+            </menu>
+        </item>
+    <item android:title="@string/about">
+        <menu>
+            <item android:title="تواصل مع المطور"
+                android:id="@+id/about_developer"/>
+        </menu>
+    </item>
+
+</menu>
