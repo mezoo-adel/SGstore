@@ -2,13 +2,18 @@ package com.example.sgstore;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
-
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
@@ -54,6 +59,12 @@ public class HomePageActivity extends AppCompatActivity {
         navigationView.setNavigationItemSelectedListener(listener);
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        isNetworkConnectionAvailable();
+    }
+
     public void open(View view) {
         Intent intent = new Intent(HomePageActivity.this, MainActivity.class);
         startActivity(intent);
@@ -61,5 +72,35 @@ public class HomePageActivity extends AppCompatActivity {
 
     public void soon (View  view){
         Toast.makeText(this, "SOOOOOON....", Toast.LENGTH_SHORT).show();
+    }
+
+    public boolean isNetworkConnectionAvailable(){
+
+        ConnectivityManager conMgr = (ConnectivityManager) getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = conMgr.getActiveNetworkInfo();
+
+        if(netInfo == null || !netInfo.isConnected() || !netInfo.isAvailable()){
+            AlertDialog.Builder builder =new AlertDialog.Builder(this);
+            builder.setTitle("No internet Connection");
+            builder.setMessage("Please turn on internet connection to continue");
+            builder.setNegativeButton("close", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                    HomePageActivity.this.finish();
+                }
+            });
+            builder.setPositiveButton("open", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    HomePageActivity.this.startActivity(new Intent(Settings.ACTION_WIRELESS_SETTINGS));
+                }
+            });
+            AlertDialog alertDialog = builder.create();
+            alertDialog.show();
+
+            return false;
+        }
+        return true;
     }
 }
