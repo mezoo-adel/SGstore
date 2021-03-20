@@ -17,10 +17,10 @@ import android.provider.Settings;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
-
 import com.google.android.material.navigation.NavigationView;
 
 public class HomePageActivity extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,16 +65,19 @@ public class HomePageActivity extends AppCompatActivity {
         isNetworkConnectionAvailable();
     }
 
-    public void open(View view) {
+    public void openPubg(View view) {
         Intent intent = new Intent(HomePageActivity.this, MainActivity.class);
         startActivity(intent);
+    }
+    public void openPes(View view){
+        startActivity(new Intent(HomePageActivity.this,PESMobile.class));
     }
 
     public void soon (View  view){
         Toast.makeText(this, "SOOOOOON....", Toast.LENGTH_SHORT).show();
     }
 
-    public boolean isNetworkConnectionAvailable(){
+    public void isNetworkConnectionAvailable(){
 
         ConnectivityManager conMgr = (ConnectivityManager) getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo netInfo = conMgr.getActiveNetworkInfo();
@@ -90,7 +93,7 @@ public class HomePageActivity extends AppCompatActivity {
                     HomePageActivity.this.finish();
                 }
             });
-            builder.setPositiveButton("open", new DialogInterface.OnClickListener() {
+            builder.setPositiveButton("connect", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     HomePageActivity.this.startActivity(new Intent(Settings.ACTION_WIRELESS_SETTINGS));
@@ -99,8 +102,6 @@ public class HomePageActivity extends AppCompatActivity {
             AlertDialog alertDialog = builder.create();
             alertDialog.show();
 
-            return false;
         }
-        return true;
     }
 }

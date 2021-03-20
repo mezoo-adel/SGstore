@@ -4,6 +4,7 @@ package com.example.sgstore;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.StrictMode;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,7 +13,7 @@ public class StartScrean extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.start_screan);
-
+        StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder().permitAll().build());
     }
 
     @Override

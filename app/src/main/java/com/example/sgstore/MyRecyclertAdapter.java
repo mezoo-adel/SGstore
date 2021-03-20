@@ -8,25 +8,22 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class MyRecyclertAdapter extends RecyclerView.Adapter {
 
-   private int[] prices;
-    private String[] description;
-    private int[] image;
-    private  int tab;
+
+    private Object[] data;
+    private int image;
+    private  String tab;
 
 
 
-    public MyRecyclertAdapter(int[] prices, String[] description, int[] image , int tab) {
-        this.prices = prices;
-        this.description = description;
+    public MyRecyclertAdapter(Object[] data, int image , String tab) {
+
+        this.data = data;
         this.image = image;
         this.tab=tab;
     }
@@ -45,28 +42,23 @@ public class MyRecyclertAdapter extends RecyclerView.Adapter {
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, final int position) {
         MyRecyclertAdapter.MyViewHolder myViewHolder = (MyRecyclertAdapter.MyViewHolder) holder;
         final CardView cardView = myViewHolder.getCardView();
-        TextView textView = cardView.findViewById(R.id.textView);
 
-     textView.setText(description[position]);
-        TextView textView2 = cardView.findViewById(R.id.textView2);
+        TextView textViewDesc = cardView.findViewById(R.id.textViewDesc);
+        textViewDesc.setText(data[position].toString().substring(0,data[position].toString().indexOf('_')));
 
-        textView2.setText((prices[position]) + " EGP");
+        TextView textViewPrice = cardView.findViewById(R.id.textViewPrice);
+        textViewPrice.setText((data[position].toString().substring(data[position].toString().indexOf('_')+1) + " EGP"));
+
         ImageView imageView = cardView.findViewById(R.id.imageView);
+       imageView.setImageResource(image);
 
-       imageView.setImageResource(image[position]);
         Button button = cardView.findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(cardView.getContext(), OrderActivity.class);
-                if(tab == 1){
-                    intent.putExtra("order", description[position]+ " " + " Pubg Kr"+ "\n" + prices[position] + "EGP" );
+                    intent.putExtra("order", data[position].toString().concat("EGP")+"\n"+tab);
                     cardView.getContext().startActivity(intent);
-                }
-                else {
-                    intent.putExtra("order", description[position] + " " +  " Pubg global "+ "\n"+prices[position]+ "EGP");
-                    cardView.getContext().startActivity(intent);
-                }
             }
         });
 
@@ -74,7 +66,7 @@ public class MyRecyclertAdapter extends RecyclerView.Adapter {
 
     @Override
     public int getItemCount() {
-        return prices.length;
+        return data.length;
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {

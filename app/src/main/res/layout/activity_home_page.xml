@@ -20,26 +20,44 @@
             android:minHeight="?attr/actionBarSize"
             android:theme="?attr/actionBarTheme" />
 
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:rotation="15"
-            android:layout_margin="50dp"
-            android:layout_weight="1"
-            android:background="@drawable/ppb"
-            android:onClick="open" />
+            android:layout_weight="3"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/Pubg"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+               android:layout_height="match_parent"
+                android:background="@drawable/ppb"
+                android:onClick="openPubg"
+                android:rotation="15" />
+
+            <Button
+                android:id="@+id/pes"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#FFFFFF"
+                android:foreground="@drawable/pes2021"
+                android:onClick="openPes"
+                android:rotation="-15" />
+
+        </LinearLayout>
 
         <Button
-            android:onClick="soon"
-            android:id="@+id/button3"
+            android:id="@+id/Soon"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:rotation="-15"
             android:layout_margin="50dp"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:background="@drawable/soon"
-            android:gravity="center|bottom" />
+            android:gravity="center|bottom"
+            android:onClick="soon"
+            android:rotation="-15" />
+
     </LinearLayout>
 
     <com.google.android.material.navigation.NavigationView

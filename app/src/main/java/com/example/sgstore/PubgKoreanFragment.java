@@ -2,6 +2,7 @@ package com.example.sgstore;
 
 import android.os.Bundle;
 
+import ConnectSQLserver.SqlDb;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,17 +18,15 @@ public class PubgKoreanFragment extends Fragment {
     public PubgKoreanFragment() {
         // Required empty public constructor
     }
-
+SqlDb db =new SqlDb();
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        int tab = 1;
-        int[] prices ={25,65,180,460,890,90};
-        String[] description={"60 Uc","190 Uc","660 Uc","1800 Uc","3850 Uc","👑 Prime Plus"};
-        int[] image = { R.drawable.uc,R.drawable.uc,R.drawable.uc,R.drawable.season,R.drawable.season,R.drawable.prime};
+        String tab = "pubgKorean";
+        int images = R.drawable.uc;
 
         RecyclerView recyclerView = (RecyclerView) inflater.inflate(R.layout.fragment_pubg_global,container,false);
-       MyRecyclertAdapter recyclertAdapter = new MyRecyclertAdapter(prices ,description,image, tab);
+       MyRecyclertAdapter recyclertAdapter = new MyRecyclertAdapter(db.getData("PubgKorean").toArray(),images , tab);
         recyclerView.setAdapter(recyclertAdapter);
 
         GridLayoutManager layoutManager = new GridLayoutManager(getActivity(), 1);

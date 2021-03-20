@@ -1,4 +1,2 @@
-include ':ConnectSQLserver-release'
-include ':ConnectSQLserver-release'
 include ':app'
 rootProject.name = "SGstore"
